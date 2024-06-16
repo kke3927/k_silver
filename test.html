@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .testBox2 {
+            display: flex;
+            gap: 5px;
+        }
+        .valueBox {
+            width: 20px;
+            height: 20px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="testBox"></div>
+    <div class="testBox"></div>
+    <a href="./img/reserve.png" download>다운로드 확인</a>
+</body>
+<script>
+    
+    // function loadBar(value, target){
+    //     for(let i=0;i<value;i++){
+    //         let addDiv=document.createElement('div');
+    //         addDiv.className='valueBox';
+    //         target.appendChild(addDiv);
+    //     }
+    // }
+    let idx = 0;
+const texts = ["안녕하세요.", "알짜배기 프로그래머 입니다."];
+const repeatFunc = function(){
+    setTimeout(function(){
+        console.log(texts[idx]);
+	    setTimeout(function(){
+	        idx += 1;
+	        if(idx == texts.length){
+	            idx = 0;
+	        }
+	        repeatFunc();
+	    }, 300);
+	}, 300);
+}
+repeatFunc();
+    let target = document.querySelectorAll('.testBox');
+</script>
+</html>

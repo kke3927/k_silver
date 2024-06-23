@@ -42,31 +42,19 @@ $(document).ready(function(){
     for(let i=0;i<menu_li_array.length;i++){
         menu_li_array[i]=$('.menu_tap > li').eq(i).text();
     }
+
+    function addArrow() {
+        for(let i=0;i<menu_li_array.length;i++){
+            if($(window).scrollTop() >= offset_array[i]){
+                console.log(i)
+                $('.menu_tap > li').eq(i+1).text(menu_li_array[i+1]);
+                $('.menu_tap > li').eq(i).text("〉 " + menu_li_array[i]);
+                $('.menu_tap > li').eq(i-1).text(menu_li_array[i-1]);
+            }
+        }
+    }
     $(window).scroll(function(){
         let scroll=$(window).scrollTop();
-        
-        if(scroll >= offset_array[5]) {
-            $('.menu_tap > li').eq(5).text("〉 " + menu_li_array[5]);
-            $('.menu_tap > li').eq(4).text(menu_li_array[4]);
-        } else if(scroll >= offset_array[4]) {
-            $('.menu_tap > li').eq(5).text(menu_li_array[5]);
-            $('.menu_tap > li').eq(4).text("〉 " + menu_li_array[4]);
-            $('.menu_tap > li').eq(3).text(menu_li_array[3]);
-        }else if(scroll >= offset_array[3]) {
-            $('.menu_tap > li').eq(4).text(menu_li_array[4]);
-            $('.menu_tap > li').eq(3).text("〉 " + menu_li_array[3]);
-            $('.menu_tap > li').eq(2).text(menu_li_array[2]);
-        }else if(scroll >= offset_array[2]) {
-            $('.menu_tap > li').eq(3).text(menu_li_array[3]);
-            $('.menu_tap > li').eq(2).text("〉 " + menu_li_array[2]);
-            $('.menu_tap > li').eq(1).text(menu_li_array[1]);
-        }else if(scroll >= offset_array[1]) {
-            $('.menu_tap > li').eq(2).text(menu_li_array[2]);
-            $('.menu_tap > li').eq(1).text("〉 " + menu_li_array[1]);
-            $('.menu_tap > li').eq(0).text(menu_li_array[0]);
-        }else {
-            $('.menu_tap > li').eq(1).text(menu_li_array[1]);
-            $('.menu_tap > li').eq(0).text("〉 " + menu_li_array[0])
-        }
+        addArrow();
     })
 })
